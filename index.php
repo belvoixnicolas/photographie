@@ -17,6 +17,7 @@
 	<script src="js/modernizr.custom.js"></script>
 </head>
 <body>
+	<a href="ajout.php">Ajouter une photo</a>
 
 	<div class="container">
 		<div class="hero">
@@ -28,165 +29,46 @@
 			<h1 class="codrops-title"><img src="img/logo.png" alt="img01" width="250px"/> <span>Charleville</span></h1>
 		</header>
 
-
 		<!-- Création d'une catégorie -->
 		<div class="stack-slider">
 			<div class="stacks-wrapper">
+			<?php foreach ($bdh -> query('SELECT ID, genre FROM genre') as $row) {?>
 				<!-- Création d'une catégorie -->
 				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Portraits</span></a></h2>
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-				</div>
-				<!-- Fin d'une catégorie -->
-				<!-- Création d'une catégorie -->
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Paysages</span></a></h2>
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-				</div>
+					<h2 class="stack-title"><a href="#" data-text="<?php echo $row[1];?>"><span><?php echo $row[1];?></span></a></h2>
+					<?php
+						$sql = 'SELECT ID_photo FROM defini WHERE ID = ' . $row[0]; 
+						foreach ($bdh -> query($sql) as $liste) {
+							$sql = 'SELECT * FROM photo WHERE ID = ' . $liste[0];
+							$req = $bdh -> query($sql);
+							$donnes = $req -> fetch();
 
-				<!-- Création d'une catégorie -->
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Nature</span></a></h2>
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-				</div>
+							$sql = 'SELECT * FROM auteur WHERE ID = ' . $donnes[3];
+							$req = $bdh -> query($sql);
+							$auteur = $req -> fetch();
 
-				<!-- Création d'une catégorie -->
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Voyage</span></a></h2>
+							$sql = 'SELECT * FROM lieu WHERE ID = ' . $donnes[3];
+							$req = $bdh -> query($sql);
+							$lieu = $req -> fetch();
+					?>
 					<!-- Création d'un Article -->
 					<div class="item">
 						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
+							<img src="img/photo/<?php echo $donnes[2]; ?>" alt="img01" />
+							<h3 class="item__title"><?php echo $donnes[1]; ?> <span class="item__date"><?php echo $donnes[5] . '/' . $donnes[6] . '/' . $donnes[7]; ?></span></h3>
 							<div class="item__details">
 								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
+									<li><i class="icon icon-camera"></i><span><?php echo $auteur[1] . ' ' . $auteur[2] ?></span></li>
+									<li><i class="icon icon-aperture"></i><span><?php echo $auteur[3] . ' ans' ?></span></li>
+									<li><i class="icon icon-exposure_time"></i><span><?php echo $lieu[1] . ' ( ' . $lieu[2] . ' )' ?></span></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
+					<?php } ?>
 				</div>
+			<?php } ?>
 
 			</div>
 			<!-- /stacks-wrapper -->
